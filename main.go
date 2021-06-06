@@ -9,6 +9,7 @@ import (
 func main() {
 	http.HandleFunc("/version", VersionHandler)
 	fmt.Println("listening on port 8080...")
+	fmt.Println("go to: http://localhost:8080/version")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		panic(err)
