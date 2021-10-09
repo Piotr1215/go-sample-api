@@ -1,0 +1,17 @@
+apiVersion: skaffold/v2beta24
+kind: Config
+metadata:
+  name: go-sample-api
+build:
+  artifacts:
+  - image: go-mod-image
+    buildpacks:
+      builder: gcr.io/buildpacks/builder:v1
+deploy:
+  kubectl:
+    manifests:
+    - deployment.yaml
+portForward:
+- resourceType: service
+  resourceName: go-mod-image
+  port: 8080
