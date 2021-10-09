@@ -5,6 +5,9 @@ metadata:
 build:
   artifacts:
   - image: go-mod-image
+    context: .
+    sync: 
+      infer: ["**/*"]
     buildpacks:
       builder: gcr.io/buildpacks/builder:v1
 deploy:
