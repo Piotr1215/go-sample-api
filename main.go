@@ -19,5 +19,5 @@ func main() {
 func VersionHandler(res http.ResponseWriter, req *http.Request) {
 	res.WriteHeader(http.StatusOK)
 	res.Header().Set("Content-Type", "application/json")
-	io.WriteString(res, `{"version": v1.0}`)
+	io.WriteString(res, `{"version": v1.3}`)
 }
