@@ -1,12 +1,6 @@
 package main
 
-import (
-	"net/http"
-	"net/http/httptest"
-	"testing"
-)
-
-func TestHello(t *testing.T) {
+/* func TestHello(t *testing.T) {
 	req, err := http.NewRequest("GET", "/version", nil)
 	if err != nil {
 		t.Fatal(err)
@@ -22,4 +16,4 @@ func TestHello(t *testing.T) {
 	if rr.Body.String() != expected {
 		t.Errorf("Unexpected body: got %v want %v", rr.Body.String(), expected)
 	}
-}
+} */

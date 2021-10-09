@@ -5,6 +5,9 @@ metadata:
 build:
   artifacts:
   - image: dockerfile-image
+    context: .
+    sync:
+      infer: ["**/*"]
     docker:
       dockerfile: Dockerfile
 deploy:
