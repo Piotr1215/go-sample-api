@@ -2,22 +2,43 @@ package main
 
 import (
 	"fmt"
-	"io"
+	"log"
 	"net/http"
 )
 
-func main() {
-	http.HandleFunc("/version", VersionHandler)
-	fmt.Println("listening on port 8080...")
-	fmt.Println("go to: http://localhost:8080/version")
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		panic(err)
-	}
-}
+const (
+	// Host name of the HTTP Server
+	Host = "localhost"
+	// Port of the HTTP Server
+	Port = "8080"
+)
 
-func VersionHandler(res http.ResponseWriter, req *http.Request) {
+func home(res http.ResponseWriter, r *http.Request) {
 	res.WriteHeader(http.StatusOK)
 	res.Header().Set("Content-Type", "application/json")
-	io.WriteString(res, `{"version": v1.0}`)
+	fmt.Fprintf(res, "HOME Page")
+}
+
+func about(res http.ResponseWriter, r *http.Request) {
+	res.WriteHeader(http.StatusOK)
+	res.Header().Set("Content-Type", "application/json")
+	fmt.Fprintf(res, "ABOUT Page")
+}
+
+func version(res http.ResponseWriter, r *http.Request) {
+	res.WriteHeader(http.StatusOK)
+	res.Header().Set("Content-Type", "application/json")
+	fmt.Fprintf(res, "VERSION Page")
+}
+
+func main() {
+	http.HandleFunc("/", home)
+	http.HandleFunc("/about", about)
+	http.HandleFunc("/version", version)
+	fmt.Println("go to: http://localhost:8080/")
+	err := http.ListenAndServe(Host+":"+Port, nil)
+	if err != nil {
+		log.Fatal("Error Starting the HTTP Server : ", err)
+		return
+	}
 }

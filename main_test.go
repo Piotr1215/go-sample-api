@@ -12,13 +12,13 @@ func TestHello(t *testing.T) {
 		t.Fatal(err)
 	}
 	rr := httptest.NewRecorder()
-	handler := http.HandlerFunc(VersionHandler)
+	handler := http.HandlerFunc(version)
 	handler.ServeHTTP(rr, req)
 	if status := rr.Code; status != http.StatusOK {
 		t.Errorf("handler returned wrong status code: got %v want %v",
 			status, http.StatusOK)
 	}
-	expected := `{"version": v1.0}`
+	expected := `VERSION Page`
 	if rr.Body.String() != expected {
 		t.Errorf("Unexpected body: got %v want %v", rr.Body.String(), expected)
 	}
