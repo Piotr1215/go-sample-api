@@ -1,7 +1,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "readFlightsRule"
+  name: "readflights"
 spec:
   description: "Allow HTTP GET /version from app=version_reader to type=service"
   endpointSelector:
