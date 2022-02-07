@@ -5,13 +5,14 @@ metadata:
   labels:
     type: service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     type: service
   ports:
     - name: default
       port: 80
       protocol: TCP
+      nodePort: 31234
       targetPort: 8080
 ---
 apiVersion: apps/v1
