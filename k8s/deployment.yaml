@@ -5,11 +5,12 @@ metadata:
   labels:
     type: service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     type: service
   ports:
-    - port: 80
+    - name: default
+      port: 80
       protocol: TCP
       targetPort: 8080
 ---
